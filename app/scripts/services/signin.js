@@ -15,7 +15,7 @@ angular.module('eventAngularApp')
         return response;
       }
       var params = data;
-      return $http.post('http://localhost:3000/'+'api/v1/accounts',params).then(success,failure);
+      return $http.post('http://localhost:3000/'+'api/v1/accounts/sign_in',params).then(success,failure);
     },
   }
   return obj;

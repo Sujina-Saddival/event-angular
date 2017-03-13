@@ -92,6 +92,9 @@
           <div class="panel-heading">
             <h3 class="panel-title">Log in with your email account</h3>
           </div>
+        <div class="flash_error" ng-show = main.alert>
+            {{main.message_signin}}
+          </div>
         </br>
         <form role="form" name="signinForm">
           <div class="container">
@@ -103,7 +106,7 @@
                   <div class="col-xs-5 col-sm-5 col-md-5">
                     <div class="form-group">
                       <label for="email" class="sr-only" required>Email</label>
-                      <input type="email" name="email" ng-model="main.email_signin" class="form-control" placeholder="somebody@example.com">
+                      <input type="email" name="email" ng-model="main.email" class="form-control" placeholder="somebody@example.com">
                     </div>
                   </div>
                   <div class="col-xs-5 col-sm-5 col-md-5">
@@ -115,7 +118,7 @@
                   <div class="col-xs-5 col-sm-5 col-md-5">
                     <div class="form-group">
                       <label for="key" class="sr-only" required>Password</label>
-                      <input type="password" name="key" ng-model="main.password_signin" class="form-control" placeholder="Password">
+                      <input type="password" name="key" ng-model="main.password" class="form-control" placeholder="Password">
                     </div>
                   </div>
                   <div class="col-xs-5 col-sm-5 col-md-5">

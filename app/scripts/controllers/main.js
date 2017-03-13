@@ -8,7 +8,7 @@
  * Controller of the eventAngularApp
  */
  angular.module('eventAngularApp')
- .controller('MainCtrl', function ($scope,$location,mainService,$timeout,signinService) {
+ .controller('MainCtrl', function ($scope,$location,mainService,$timeout,signinService,$window) {
   var vm = this;
   var flag;
   var flag_registered;
@@ -58,19 +58,19 @@
   vm.submit_signin = function(){
     var params = {
       user: {
-      email: vm.email_signin,
-      password: vm.password_signin
+      email: vm.email,
+      password: vm.password
       }
     }
 
     signinService.postData(params).then(function(response) {
       if (response.data.status === 200){
-        // $location.path('/');
+        $location.path('/event')
       }
       else {
-        // vm.flag = false;
-        // vm.flash = response.data.message;
-        // $timeout(function () { vm.flag = "true"; }, 3000);
+        vm.message_signin = response.data.message;
+        vm.alert = true;
+        $timeout(function () { vm.alert = false; }, 3000);
       }
     });
   }
