@@ -1,23 +1,147 @@
 <div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
+  <img  class="event_image" src="images/main.jpg" alt="event">
+  <h1 style="color:#002699">'Party Time!'</h1>
+  <p class="lead" style="color:#002db3">
+    <img src="images/logo.png" alt="schedule"><br>
+    Invite Your Invitees HERE!!..
   </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+  <p><button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#signup">New User!?<span class="glyphicon glyphicon-ok"></span></button></p>
+  <a ng-href="#/" data-toggle="modal" data-target="#signin">Alreay Signed!?</a>
 </div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+<!-- Signup modal starts -->
+<div class="modal fade" id="signup" role="dialog">
+  <div class="modal-dialog">
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Please sign up to start <small>It's free!</small></h3>
+          </div>
+          <div class="flash_error" ng-hide = main.flag>
+            {{main.flash}}
+          </div>
+          <div class="flash_success" ng-hide = main.flag_registered>
+            {{main.message}}
+            <a ng-href="#/">Sign In now!!</a>
+          </div>
+
+
+          <div class="panel-body">
+            <form role="form" name="signupForm">
+              <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="text" name="first_name" ng-model="main.first_name" class="form-control input-sm" placeholder="First Name" required>
+                  </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="text" name="last_name" ng-model="main.last_name" class="form-control input-sm" placeholder="Last Name" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input type="email" name="email" ng-model="main.email" class="form-control input-sm" placeholder="Email Address" required>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="password" name="password" ng-model="main.password" class="form-control input-sm" placeholder="Password" required minlength=6 maxlength=6>
+                  </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="password" name="password_confirmation" ng-model="main.password_confirmation" class="form-control input-sm" placeholder="Confirm Password" required minlength=6 maxlength=6>
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn btn-info btn-block" ng-click="main.submit_signup()" ng-disabled="signupForm.$invalid">Register</button>
+              <button class="btn btn-info btn-block" ng-click="main.close()">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
+<!-- Signup modal ends -->
+
+<!-- Signin modal starts -->
+<div class="modal fade" id="signin" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Log in with your email account</h3>
+          </div>
+        <div class="flash_error" ng-show = main.alert>
+            {{main.message_signin}}
+          </div>
+        </br>
+        <form role="form" name="signinForm">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="row">
+                  <div class="col-xs-2 col-sm-2 col-md-2">
+                  </div>
+                  <div class="col-xs-5 col-sm-5 col-md-5">
+                    <div class="form-group">
+                      <label for="email" class="sr-only" required>Email</label>
+                      <input type="email" name="email" ng-model="main.email" class="form-control" placeholder="somebody@example.com">
+                    </div>
+                  </div>
+                  <div class="col-xs-5 col-sm-5 col-md-5">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-2 col-sm-2 col-md-2">
+                  </div>
+                  <div class="col-xs-5 col-sm-5 col-md-5">
+                    <div class="form-group">
+                      <label for="key" class="sr-only" required>Password</label>
+                      <input type="password" name="key" ng-model="main.password" class="form-control" placeholder="Password">
+                    </div>
+                  </div>
+                  <div class="col-xs-5 col-sm-5 col-md-5">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-2 col-sm-2 col-md-2">
+                  </div>
+                  <div class="col-xs-5 col-sm-5 col-md-5">
+                    <button class="btn btn-info btn-block" ng-click="main.submit_signin()">Log In</button>
+                    <button class="btn btn-info btn-block" ng-click="main.close()">Cancel</button>
+                  </div>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5">
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Signin modal ends -->
+
